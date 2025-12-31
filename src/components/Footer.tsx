@@ -1,6 +1,30 @@
 import { Phone, Mail, MapPin } from "lucide-react";
 
+// Declare gtag for TypeScript
+declare global {
+  interface Window {
+    gtag: (
+      command: string,
+      eventName: string,
+      params?: Record<string, any>
+    ) => void;
+  }
+}
+
 const Footer = () => {
+  const handleCallClick = () => {
+    // Track conversion event for phone call
+    if (typeof window.gtag !== "undefined") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17271543980/u1JSCPi6xtobEKyx26tA",
+        event_category: "Phone Call",
+        event_label: "Footer",
+        value: 1.0,
+        currency: "USD",
+      });
+    }
+  };
+
   return (
     <footer className="bg-charcoal text-primary-foreground py-12 px-4 pb-28">
       <div className="max-w-lg mx-auto text-center">
@@ -14,6 +38,7 @@ const Footer = () => {
         <div className="space-y-3 mb-8">
           <a
             href="tel:+14692108283"
+            onClick={handleCallClick}
             className="flex items-center justify-center gap-2 text-primary-foreground/90 hover:text-primary transition-colors"
           >
             <Phone className="w-4 h-4" />

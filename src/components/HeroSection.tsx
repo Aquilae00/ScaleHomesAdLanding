@@ -5,7 +5,31 @@ import bbbBadge from "@/assets/BBB.png";
 import googleLogo from "@/assets/Google.png";
 import logo from "@/assets/logo.png";
 
+// Declare gtag for TypeScript
+declare global {
+  interface Window {
+    gtag: (
+      command: string,
+      eventName: string,
+      params?: Record<string, any>
+    ) => void;
+  }
+}
+
 const HeroSection = () => {
+  const handleCallClick = () => {
+    // Track conversion event for phone call
+    if (typeof window.gtag !== "undefined") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17271543980/u1JSCPi6xtobEKyx26tA",
+        event_category: "Phone Call",
+        event_label: "Footer",
+        value: 1.0,
+        currency: "USD",
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col">
       {/* Background Image */}
@@ -96,7 +120,7 @@ const HeroSection = () => {
           style={{ animationDelay: "0.6s" }}
         >
           <Button asChild size="lg" className="w-full sm:w-auto gap-2">
-            <a href="tel:+14692108283">
+            <a href="tel:+14692108283" onClick={handleCallClick}>
               <Phone className="w-5 h-5" />
               Call Us Now
             </a>

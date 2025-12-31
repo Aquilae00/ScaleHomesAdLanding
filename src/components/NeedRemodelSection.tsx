@@ -3,6 +3,17 @@ import { Button } from "./ui/button";
 import heroRemodel from "@/assets/worker.webp";
 import logo from "@/assets/logo.png";
 
+// Declare gtag for TypeScript
+declare global {
+  interface Window {
+    gtag: (
+      command: string,
+      eventName: string,
+      params?: Record<string, any>
+    ) => void;
+  }
+}
+
 const NeedRemodelSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -25,6 +36,16 @@ const NeedRemodelSection = () => {
   }, []);
 
   const handleCallClick = () => {
+    // Track conversion event for phone call
+    if (typeof window.gtag !== "undefined") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-17271543980/u1JSCPi6xtobEKyx26tA",
+        event_category: "Phone Call",
+        event_label: "Footer",
+        value: 1.0,
+        currency: "USD",
+      });
+    }
     window.location.href = "tel:+14692108283";
   };
 
