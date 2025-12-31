@@ -3,6 +3,17 @@ import { Send, CheckCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
+// Declare gtag for TypeScript
+declare global {
+    interface Window {
+        gtag: (
+            command: string,
+            eventName: string,
+            params?: Record<string, any>
+        ) => void;
+    }
+}
+
 const projectTypes = [
     "Kitchen Remodel",
     "Bathroom Remodel",
@@ -65,6 +76,17 @@ const ContactForm = () => {
                 },
                 body: JSON.stringify(formData),
             });
+
+            // Track lead generation event in Google Analytics
+            if (typeof window.gtag !== "undefined") {
+                window.gtag("event", "generate_lead", {
+                    event_category: "Lead Generation",
+                    event_label: formData.projectType || "No Project Type",
+                    value: 1,
+                    lead_name: formData.name,
+                    project_type: formData.projectType,
+                });
+            }
           
         } catch (err) {
             toast({
