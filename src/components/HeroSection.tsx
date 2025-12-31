@@ -18,16 +18,17 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/90" />
       </div>
 
+      {/* Logo - Top Left */}
+      <div className="absolute top-4 left-4 z-20 animate-fade-up" style={{ animationDelay: "0s" }}>
+        <img 
+          src={logo} 
+          alt="DFW Home Connect Logo" 
+          className="w-12 h-12 rounded-lg object-cover shadow-lg"
+        />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 flex-1 flex flex-col justify-center px-4 pt-16 pb-32 text-center">
-        {/* Logo */}
-        <div className="animate-fade-up flex justify-center mb-6" style={{ animationDelay: "0s" }}>
-          <img 
-            src={logo} 
-            alt="DFW Home Connect Logo" 
-            className="w-24 h-24 rounded-full object-cover shadow-lg"
-          />
-        </div>
 
         {/* Trust Badge */}
         <div className="animate-fade-up mb-6" style={{ animationDelay: "0.1s" }}>
