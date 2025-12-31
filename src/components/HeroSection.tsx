@@ -96,7 +96,7 @@ const HeroSection = () => {
           style={{ animationDelay: "0.6s" }}
         >
           <Button asChild size="lg" className="w-full sm:w-auto gap-2">
-            <a href="tel:+4692108283">
+            <a href="tel:+14692108283">
               <Phone className="w-5 h-5" />
               Call Us Now
             </a>
