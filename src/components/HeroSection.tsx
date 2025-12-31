@@ -28,7 +28,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center px-4 pt-16 pb-32 text-center">
+      <div className="relative z-10 flex-1 flex flex-col justify-center px-4 pt-24 pb-32 text-center">
 
         {/* Trust Badge */}
         <div className="animate-fade-up mb-6" style={{ animationDelay: "0.1s" }}>
